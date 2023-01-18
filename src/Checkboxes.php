@@ -70,7 +70,7 @@ class Checkboxes extends Field
             $value = explode(',', $value);
         } elseif (! $value) {
             $value = [];
-        } 
+        }
 
         if (Arr::isAssoc($value)) {
             $value = $this->onlyChecked($value);
@@ -94,6 +94,10 @@ class Checkboxes extends Field
                 $value = $data;
             } else {
                 $value = $this->onlyChecked($data);
+
+              if (empty($value)) {
+                $value = null;
+              }
             }
 
             $model->{$attribute} = $value;
